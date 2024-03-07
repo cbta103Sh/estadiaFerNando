@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/addUser.css">
+</head>
+<body>
+    <header> 
+        <nav>
+            <div class="navbar-container">
+                <img src="img/Emblema_CBTA.png" alt="" class="logo">
+                <div class="nav-links">
+                    <ul>
+                        <li>
+                            <a href="./addReport.html">Agregar reporte</a>
+                        </li>
+                        <li>
+                            <a href="./cartasCom.html">Carta compromiso</a>
+                        </li>
+                        <li>
+                            <a href="./mustraDatos.html">Ver reporte</a>
+                        </li>
+                        <li>
+                            <a href="./citatorio.html">Ver citatorios</a>
+                        </li>
+                        <li>
+                            <a href="./addUser.html">Agregar Usuario</a>
+                        </li>
+                        <li>
+                            <a href="./muestraUsers.html">Ver Usuarios</a>
+                        </li>
+                        <li>
+                            <form class="logout-form" action="/logout" method="POST">
+                                <button class="logout-button" type="submit">Cerrar Sesión</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <form action="/registro-usuario" method="post" id="registroUsuarioForm" class="form-AddUser">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName">Nombre de Usuario:</label>
+            <input type="text" class="form-control" id="userName" name="userName" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="pass">Contraseña:</label>
+            <div class="input-group">
+                <input type="password" class="form-control" id="pass" name="pass" required style="width: 80%;">
+                <button   type="button" class="btn btn-outline-secondary input-group-append btnSend" onclick="togglePasswordVisibility()">Ver</button>
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="pass">Confirmar contraseña:</label>
+            <div class="input-group">
+                <input type="password" class="form-control" id="confirmPass" name="confirmPass" required>
+                
+            </div>
+        </div>
+    
+    
+        <div class="form-group">
+            <label for="tipoUsuario">Tipo de Usuario:</label>
+            <select class="form-control" id="tipoUsuario" name="tipoUsuario" required>
+                
+                <option value="Prefecto">Prefecto</option>
+                <option value="Administrador">Administrador</option>
+            </select>
+        </div>
+    
+        <button type="submit" class="btn btn-primary mt-4">Registrar Usuario</button>
+    </form>
+    
+</body>
+<script src="js/addUser.js"></script>
+</html>

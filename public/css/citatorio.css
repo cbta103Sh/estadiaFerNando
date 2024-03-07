@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  
+  }
+  .small {
+    font-size: 15px;
+  }
+  
+  table.table {
+    width: 100%; 
+    margin: auto; 
+  
+  
+    max-width: 700px; 
+  }
+  
+  table.table tr {
+    height: 20px; 
+  }
+  
+  table.table td,
+  table.table th {
+    padding: 15px; 
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  
+  }
+  header {
+      
+      max-width: 75rem;
+      margin: 1.1rem auto;
+      padding: .9rem;
+      background: #fff; 
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+      
+  
+    }
+    
+    img {
+      height: 100px;
+    }
+    
+    nav ul {
+      display: flex;
+      margin-left: 50px; /* Mueve la lista de enlaces al lado derecho */
+    }
+    
+    nav ul li {
+      list-style: none;
+      margin-left: 0px;
+    }
+    
+    nav ul li a {
+  
+      margin: .6rem 0;
+      padding: .6rem 1.25rem;
+      text-decoration: none;
+      color: #262626;
+    }
+    
+    nav ul li a.active,
+    nav ul li a:hover {
+      background: #063b00;
+      color: #fff;
+      transition: .5s;
+    }
+  
+  .form-CartasCompromiso {
+    width: 600px;
+    padding: 16px;
+    border-radius: 10px;
+    margin: auto;
+    background-color: #ccc;
+    margin-bottom: 50px;
+  }
+  
+  h1 {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  
+  /* Estilo para etiquetas */
+  label {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 15px;
+  
+  }
+  .logout-form {
+    margin-right: 0;
+  }
+  .logout-button {
+    padding: 5px 10px;
+    background-color: rgb(183, 1, 1);
+    color: #fff;
+    font-size: 14px;
+    margin-left: 25px;
+    cursor: pointer;
+  }
+  .logout-button:hover {
+    background-color: rgb(153, 0, 0);
+  }
+  /* Estilo para inputs y selects */
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #666;
+    border-radius: 5px;
+  }
+  
+  /* Estilo para selects específicos */
+  select {
+    appearance: none;
+    background-position: right 8px center;
+  }
+  
+  

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Reportes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header> 
+        <nav>
+            <div class="navbar-container">
+                <img src="img/Emblema_CBTA.png" alt="" class="logo">
+                <div class="nav-links">
+                    <ul>
+                        <li>
+                            <a href="./addReport.html">Agregar reporte</a>
+                        </li>
+                        <li>
+                            <a href="./cartasCom.html">Carta compromiso</a>
+                        </li>
+                        <li>
+                            <a href="./mustraDatos.html">Ver reporte</a>
+                        </li>
+                        <li>
+                            <a href="./citatorio.html">Ver citatorios</a>
+                        </li>
+                        <li>
+                            <a href="./addUser.html">Agregar Usuario</a>
+                        </li>
+                        <li>
+                            <a href="./muestraUsers.html">Ver Usuarios</a>
+                        </li>
+                        <li>
+                            <form class="logout-form" action="/logout" method="POST">
+                                <button class="logout-button" type="submit">Cerrar Sesión</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div>
+        <h1 class="mb-4">Generador de Reportes</h1>
+        
+        <!-- Formulario para crear un nuevo reporte -->
+        <form action="/create-report" method="post" id="envioReporte" class="form-add">
+            <div>
+                <label for="nombreAlumno">No. de control:</label>
+                <input type="number" class="form-control" id="No_Control" name="No_Control" required>
+            </div>
+            <div>
+                <label for="nombreAlumno">Nombre del Alumno:</label>
+                <input type="text" class="form-control" id="nombreAlumno" name="nombreAlumno" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="nombrePadreTutor">Nombre del Padre o Tutor:</label>
+                <input type="text" class="form-control" id="nombrePadreTutor" name="nombrePadreTutor" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="fechaReporte">Fecha del Reporte:</label>
+                <input type="date" class="form-control" id="fechaReporte" name="fechaReporte" required oninput="validateDate()">
+            </div>
+            
+            <div class="form-group">
+                <label for="semestre">Semestre:</label>
+                <select class="form-control" id="semestre" name="semestre" required onchange="handleSemestreChange()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="grupo">Grupo:</label>
+                <select class="form-control" id="grupo" name="grupo" required>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="especialidad">Especialidad:</label>
+                <select class="form-control" id="especialidad" name="especialidad" required>
+                    <option value="N/A">N/A</option>
+                    <option value="Ofimatica">Ofimática</option>
+                    <option value="Programacion">Programación</option>
+                    <option value="Vitinicultura">Vitinicultura</option>
+                    <option value="Agropecuario">Agropecuario</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tipoReporte">Tipo de reporte:</label><br>
+                <input type="radio" name="tipoReporte" id="rbAcademico" value="academico" onclick="mostrarRazones('academico')"> Académico <br>
+                <input type="radio" name="tipoReporte" id="rbConducta" value="conducta" onclick="mostrarRazones('conducta')"> Conducta <br>
+                <input type="radio" name="tipoReporte" id="rbOtro" value="otro" onclick="mostrarRazones('otro')"> Otro
+            </div>
+            
+            <div class="form-group razonAcademico" style="display: none;">
+                <label for="razonAcademico">Razones Académicas:</label>
+                <select class="form-control" name="razonAcademico">
+                    
+                    <option value="Inasistencias">Inasistencias</option>
+                    <option value="No porta uniforme">No porta el uniforme completo</option>
+                    <option value="Daño a las instalaciones del plantel">Daño a las instalaciones del plantel</option>
+                    <option value="Salida del plantel sin permiso">Salida del plantel sin permiso</option>
+                    <option value="Falta de respeto a docentes">Falta de respeto a docentes</option>
+                    <option value="Falta de respeto a alumnos">Falta de respeto a alumnos</option>
+                    <option value="Falta de respeto al personal del plantel">Falta de respeto al personal del plantel</option>
+                    <option value="Participar en una pelea">Participar en una pelea</option>
+                    <option value="Lenguaje inadecuado">Lenguaje inadecuado</option>
+                    <option value="Lanzamiento de objetos">Lanzamiento de objetos</option>
+                    <option value="Porta cachucha o gorra">Porta cachucha o gorra</option>
+                    <option value="Portación de objetos peligrosos">Portación de objetos peligrosos</option>
+                    <option value="Entrada por un acceso no autorizado">Entrada por un acceso no autorizado</option>
+                    <option value="Salida por un acceso no autorizado">Salida por un acceso no autorizado</option>
+                    <option value="Fumar tabaco o vape">Fumar tabaco o vape</option>
+                    <option value="Robo de objetos">Robo de objetos</option>
+                    
+                </select>
+            </div>
+            
+            <div class="form-group razonConducta" style="display: none;">
+                <label for="razonConducta">Razones de Conducta:</label>
+                <select class="form-control" name="razonConducta">
+                    
+                    
+                    <option value="Comportamiento inadecuado">Comportamiento inadecuado</option>
+                    <option value="Interrumpir en clases">Interrumpir en clases</option>
+                    <option value="No asistir a clases">No asistir a clases</option>
+                    <option value="Llegar tarde a clases">Llegar tarde a clases</option>
+                    <option value="Plagio de trabajos o actividades">Plagio de trabajos o actividades</option>
+                    <option value="Hablar mucho">Hablar mucho</option>
+                    <option value="Gritar en clase">Gritar en clase</option>
+                    <option value="Conducta agresiva">Conducta agresiva</option>
+                    <option value="No cumplir con las actividades en clase">No cumplir con las actividades en clase</option>
+                    <option value="No entregar tareas">No entregar tareas</option>
+                    <option value="No prestar atención a clases">No prestar atención a clases</option>
+                    
+                </select>
+            </div>
+            
+            <div class="form-group razonOtro" style="display: none;">
+                <label for="razonOtro">Razón del reporte:</label>
+                <input type="text" class="form-control" name="razonOtro">
+            </div>
+            
+            <div class="form-group">
+                <h5 for="motivo">Motivo del Reporte:</h5>
+                <textarea class="form-control" id="motivo" name="motivo" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-4" id="btnSubmit" name="accion" value="crearReporte">Crear Reporte</button>
+            <button type="submit" class="btn btn-primary mt-4" id="btnCartaCompromiso" style="display: none;" name="accion" value="crearCartaCompromiso">Crear Carta Compromiso</button>
+            
+        </form>
+    </div>
+    <!--este es el index.html-->
+    <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
