@@ -19,91 +19,6 @@
   
   app.use(bodyParser.urlencoded({ extended: true }));
   
-   
-  /*--------------------Archivos html prefectos ---------------------------
-
-  app.get('/prefectosAdd.html', helpers.isAuthenticated, (req, res) => {
-    // Define la ruta del archivo prefectosAdd.html
-    const filePath = path.join(__dirname, 'public', 'prefectosAdd.html');
-
-    // Envía el archivo HTML al cliente
-    res.sendFile(filePath);
-});
-app.get('/prefectosMuestra.html', helpers.isAuthenticated, (req, res) => {
-  // Define la ruta del archivo prefectosAdd.html
-  const filePath = path.join(__dirname, 'public', 'prefectosMuestra.html');
-
-  // Envía el archivo HTML al cliente
-  res.sendFile(filePath);
-});
-
-*/
-
-
-
-
- 
-
-/*--------------------Archivos html Administradores ---------------------------*/
-
-/*
-app.get('/addReport.html', helpers.isAuthenticated, (req, res) => {
-  // Define la ruta del archivo prefectosAdd.html
-  const filePath = path.join(__dirname, 'public', 'addReport.html');
-
-  // Envía el archivo HTML al cliente
-  res.sendFile(filePath);
-});
-app.get('/addUser.html', helpers.isAuthenticated, (req, res) => {
-// Define la ruta del archivo prefectosAdd.html
-const filePath = path.join(__dirname, 'public', 'addUser.html');
-
-// Envía el archivo HTML al cliente
-res.sendFile(filePath);
-});
-
-app.get('/cartasCom.html', helpers.isAuthenticated, (req, res) => {
-  // Define la ruta del archivo prefectosAdd.html
-  const filePath = path.join(__dirname, 'public', 'cartasCom.html');
-
-  // Envía el archivo HTML al cliente
-  res.sendFile(filePath);
-});
-app.get('/citatorio.html', helpers.isAuthenticated, (req, res) => {
-// Define la ruta del archivo prefectosAdd.html
-const filePath = path.join(__dirname, 'public', 'citatorio.html');
-
-// Envía el archivo HTML al cliente
-res.sendFile(filePath);
-});
-
-
-app.get('/muestraDatos.html', helpers.isAuthenticated, (req, res) => {
-  // Define la ruta del archivo prefectosAdd.html
-  const filePath = path.join(__dirname, 'public', 'muestraDatos.html');
-
-  // Envía el archivo HTML al cliente
-  res.sendFile(filePath);
-});
-app.get('/muestraUsers.html', helpers.isAuthenticated, (req, res) => {
-// Define la ruta del archivo prefectosAdd.html
-const filePath = path.join(__dirname, 'public', 'muestraUsers.html');
-
-// Envía el archivo HTML al cliente
-res.sendFile(filePath);
-});
-
-*/
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1091,7 +1006,8 @@ app.post('/logout', (req, res) => {
 });
 
   /*--------------------Servidor ---------------------------*/
-  const PORT = process.env.PORT || 3002;
+  const PORT = process.env.PORT || 3003
+  ;
   app.listen(PORT, () => {
     console.log(`Servidor en funcionamiento en http://localhost:${PORT}`);
   });
