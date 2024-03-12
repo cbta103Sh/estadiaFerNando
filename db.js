@@ -1,9 +1,8 @@
 // db.js
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://SturninoHernan:cbta103SH@FerNando.mongodb.net/estadia?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+mongoose.connect('mongodb://localhost/estadia', {
+ 
 });
 
 const db = mongoose.connection;
