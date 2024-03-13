@@ -1,7 +1,7 @@
 // db.js
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/estadia', {
+mongoose.connect('mongodb+srv://SturninoHernan:cbta103SH@fernando.n4wjqef.mongodb.net/', {
  
 });
 
