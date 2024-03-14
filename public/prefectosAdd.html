@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Reportes</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prefectosadd.css">
 </head>
 <body>
     <header> 
@@ -36,7 +36,7 @@
         <h1 class="mb-4">Generador de Reportes</h1>
         
         <!-- Formulario para crear un nuevo reporte -->
-        <form action="/create-report-prefectos" method="post" id="envioReporte">
+        <form action="/create-report-prefectos" method="post" id="envioReporte" class="form-AddUser">
             <div>
                 <label for="nombreAlumno">No. de control:</label>
                 <input type="number" class="form-control" id="nombreAlumno" name="nombreAlumno" required>
@@ -98,8 +98,8 @@
             </div>
             <div class="form-group">
                 <label for="tipoReporte">Tipo de reporte:</label><br>
-                <input type="radio" name="tipoReporte" id="rbAcademico" value="academico" onclick="mostrarRazones('academico')"> Académico <br>
-                <input type="radio" name="tipoReporte" id="rbConducta" value="conducta" onclick="mostrarRazones('conducta')"> Conducta <br>
+                <input type="radio" name="tipoReporte" class="mt-1" id="rbAcademico" value="academico" onclick="mostrarRazones('academico')"> Académico
+                <input type="radio" name="tipoReporte" id="rbConducta" value="conducta" onclick="mostrarRazones('conducta')"> Conducta
                 <input type="radio" name="tipoReporte" id="rbOtro" value="otro" onclick="mostrarRazones('otro')"> Otro
             </div>
             
