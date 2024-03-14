@@ -47,7 +47,7 @@ function mostrarDatos(data) {
         console.error('La respuesta del servidor no es un array:', data);
     }
 }
-
+ 
 function generarPDF(reportId) {
     // Realiza una solicitud al servidor para generar el PDF
     fetch(`/generarPDF/${reportId}`)
@@ -71,8 +71,9 @@ function actualizarTabla() {
     console.log("Evento de cambio detectado. Ejecutando actualizarTabla...");
     
     // Obtén los valores de los filtros
+    
     const nombre = document.getElementById('nombre').value;
-    const apellido = document.getElementById('apellido').value; // Nuevo campo de apellido
+    const apellido = document.getElementById('apellido').value; 
     const grupo = document.getElementById('grupo').value;
     const semestre = document.getElementById('semestre').value;
     const especialidad = document.getElementById('especialidad').value;
@@ -83,8 +84,9 @@ function actualizarTabla() {
     let url = '/filtrarDatos?';
     
     // Agrega cada criterio al URL solo si está presente
+   
     if (nombre) url += `nombre=${nombre}&`;
-    if (apellido) url += `apellido=${apellido}&`; // Nuevo campo de apellido
+    if (apellido) url += `apellido=${apellido}&`; 
     if (grupo) url += `grupo=${grupo}&`;
     if (semestre) url += `semestre=${semestre}&`;
     if (especialidad) url += `especialidad=${especialidad}&`;
@@ -113,6 +115,7 @@ function actualizarTabla() {
             data.forEach(report => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
+                <td>${report.No_Control}</td>
                 <td>${report.nombreAlumno}</td>
                 <td>${report.apellidos}</td>
                 <td>${report.nombrePadreTutor}</td>
@@ -124,7 +127,6 @@ function actualizarTabla() {
                 <td>${report.razon}</td>
                 <td>${report.motivo}</td>
                 <td>
-                
                 
                 <button class="btn btn-warning mt-1 rounded" onclick="generarPDF('${report._id}')">Imprimir</button>
                 </td>
@@ -138,8 +140,9 @@ function actualizarTabla() {
     .catch(error => console.error('Error al cargar datos:', error));
 }
 // Enlaza la función actualizarTabla a los eventos de cambio en los campos de filtro
+
 document.getElementById('nombre').addEventListener('input', actualizarTabla);
-document.getElementById('apellido').addEventListener('input', actualizarTabla); // Nuevo evento para el campo de apellido
+document.getElementById('apellido').addEventListener('input', actualizarTabla); 
 document.getElementById('grupo').addEventListener('change', actualizarTabla);
 document.getElementById('semestre').addEventListener('change', actualizarTabla);
 document.getElementById('especialidad').addEventListener('change', actualizarTabla);
