@@ -55,17 +55,6 @@ app.get('/muestraDatos', isAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'muestraDatos.html'));
 });
 
-
-
-// Rutas para el rol de Prefecto
-app.get('/prefecctosAdd', isPrefect, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'prefecctosAdd.html'));
-});
-
-app.get('/prefectosMuestra', isPrefect, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'prefectosMuestra.html'));
-});
-
 // Middleware de autorización para Prefecto
 const isPrefect = (req, res, next) => {
   if (req.user && req.user.tipoUsuario === 'Prefecto') {
@@ -75,6 +64,16 @@ const isPrefect = (req, res, next) => {
   }
 
 };
+// Rutas para el rol de Prefecto
+app.get('/prefecctosAdd', isPrefect, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'prefecctosAdd.html'));
+});
+
+app.get('/prefectosMuestra', isPrefect, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'prefectosMuestra.html'));
+});
+
+
 
 
 
@@ -1053,13 +1052,16 @@ app.post('/logout', (req, res) => {
       console.error('Error al cerrar sesión:', err);
       return res.status(500).send('Error interno del servidor');
     }
+    // Agrega cabeceras para evitar el almacenamiento en caché
+    res.setHeader('Cache-Control', 'no-cache, no-store');
+    res.setHeader('Pragma', 'no-cache');
     // Redirige al usuario a la página de inicio de sesión
-    res.redirect('/index.html');
+    res.redirect('/');
   });
 });
 
   /*--------------------Servidor ---------------------------*/
-  const PORT = process.env.PORT || 3005
+  const PORT = process.env.PORT || 3002
   ;
   app.listen(PORT, () => {
     console.log(`Servidor en funcionamiento en http://localhost:${PORT}`);
