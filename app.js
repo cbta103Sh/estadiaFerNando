@@ -10,18 +10,71 @@
   const Report = require('./models/reorteModel')
   const Citatorio = require('./models/citatorioModel');
   const Usuario = require('./models/userModel')
- // const helpers = require('./helpers'); 
+  const cors = require ('cors');
   const session = require('express-session');
   const app = express();
   app.use(express.json());
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.urlencoded({ extended: true }));
-  
+  app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   
 
 
+// Middleware de autorización para Administrador
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.tipoUsuario === 'Administrador') {
+    next(); // Permitir acceso a la siguiente ruta
+  } else {
+    res.status(403).json({ message: 'Acceso no autorizado' });
+  }
+};
 
+// Rutas para el rol de Administrador
+app.get('/addReport', isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'addReport.html'));
+});
+
+app.get('/addUser', isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'addUser.html'));
+});
+
+app.get('/cartasCom', isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'cartasCom.html'));
+});
+
+app.get('/citatorio', isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'citatorio.html'));
+});
+
+app.get('/muestraUsers', isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'muestraUsers.html'));
+});
+
+app.get('/muestraDatos', isAdmin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'muestraDatos.html'));
+});
+
+
+
+// Rutas para el rol de Prefecto
+app.get('/prefecctosAdd', isPrefect, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'prefecctosAdd.html'));
+});
+
+app.get('/prefectosMuestra', isPrefect, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'prefectosMuestra.html'));
+});
+
+// Middleware de autorización para Prefecto
+const isPrefect = (req, res, next) => {
+  if (req.user && req.user.tipoUsuario === 'Prefecto') {
+    next(); // Permitir acceso a la siguiente ruta
+  } else {
+    res.status(403).json({ message: 'Acceso no autorizado' });
+  }
+
+};
 
 
 
@@ -71,7 +124,7 @@
     
     res.sendFile(path.join(__dirname, 'public', 'Login.html'));
   });
-  app.post('/create-report', async (req, res) => {
+  app.post('/create-report', isAdmin , async (req, res) => {
     try {
       // Captura los datos del formulario
       const {
@@ -1006,7 +1059,7 @@ app.post('/logout', (req, res) => {
 });
 
   /*--------------------Servidor ---------------------------*/
-  const PORT = process.env.PORT || 3003
+  const PORT = process.env.PORT || 3005
   ;
   app.listen(PORT, () => {
     console.log(`Servidor en funcionamiento en http://localhost:${PORT}`);
